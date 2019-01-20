@@ -1,0 +1,27 @@
+{
+  "name": "mfagateway",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Juan Carlos Lloret Hernández",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "apollo-server": "^2.3.1",
+    "axios": "^0.18.0",
+    "graphql": "^14.1.1",
+    "graphql-resolvers": "^0.3.2"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "eslint": "^5.12.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "nodemon": "^1.18.9"
+  }
+}
