@@ -9,7 +9,12 @@ const productSchema = gql`
     type: String
   }
   extend type Query {
-    products(cursor: String, limit: Int): Product!
+    products(
+      type: String
+      offset: Int
+      limit: Int
+      category: String
+    ): [Product]!
   }
 `
 
