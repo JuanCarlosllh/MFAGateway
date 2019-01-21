@@ -3,9 +3,8 @@ const { getProducts } = require('../services/products')
 
 const productResolvers = {
   Query: {
-    products: async (_, { limit, offset, category }) => {
-      return getProducts(limit, offset, category)
-    }
+    products: async (_, { limit, offset, category }, ctx) =>
+      getProducts(limit, offset, category)
   }
 }
 

@@ -1,14 +1,29 @@
-const { ApolloServer } = require('apollo-server')
+const express = require('express')
+const { ApolloServer } = require('apollo-server-express')
+const passport = require('passport')
+const bodyParser = require('body-parser')
 
 require('dotenv').config()
+const auth = require('./routes/auth')
 const schema = require('./schema')
 const resolvers = require('./resolvers')
 
 const server = new ApolloServer({
   typeDefs: schema,
-  resolvers
+  resolvers,
+  context: ({ req }) => ({
+    user: req.user
+  })
 })
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`)
-})
+require('./passport')
+const app = express()
+app.use(bodyParser.json())
+app.use(auth)
+app.use('/graphql', passport.authenticate('jwt', { session: false }))
+
+server.applyMiddleware({ app })
+
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+)
