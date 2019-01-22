@@ -15,6 +15,7 @@ passport.use(
       passwordField: 'password'
     },
     async (uName, uPass, next) => {
+      console.log(uName, uPass)
       try {
         const user = await getUserByUserName(uName)
         const { id, username, password } = user.data

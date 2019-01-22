@@ -2,6 +2,7 @@ const express = require('express')
 const { ApolloServer } = require('apollo-server-express')
 const passport = require('passport')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 require('dotenv').config()
 const auth = require('./routes/auth')
@@ -18,6 +19,7 @@ const server = new ApolloServer({
 
 require('./passport')
 const app = express()
+app.use(cors())
 app.use(bodyParser.json())
 app.use(auth)
 app.use('/graphql', passport.authenticate('jwt', { session: false }))
