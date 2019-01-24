@@ -9,7 +9,10 @@ const getUserById = async id => axios.get(`${serviceUrl}/${id}`)
 const getUserByUserName = async username =>
   axios.get(`${serviceUrl}/username/${username}`)
 
+const registerUser = userData => axios.post(serviceUrl, userData)
+
 module.exports = {
   getUserByUserName,
-  getUserById
+  getUserById,
+  registerUser
 }

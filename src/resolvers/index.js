@@ -1,3 +1,4 @@
 const { productResolvers } = require('./products')
+const { usersResolvers } = require('./users')
 
-module.exports = [productResolvers]
+module.exports = [productResolvers, usersResolvers]
