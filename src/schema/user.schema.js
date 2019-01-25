@@ -4,6 +4,7 @@ const userSchema = gql`
   type User {
     id: ID!
     username: String!
+    favorites: [Product]
   }
   extend type Query {
     me: User!

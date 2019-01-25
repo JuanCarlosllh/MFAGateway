@@ -7,6 +7,7 @@ const productSchema = gql`
     prize: String!
     image: String
     type: String
+    isOnFavorites: Boolean
   }
   extend type Query {
     products(
@@ -15,6 +16,10 @@ const productSchema = gql`
       limit: Int
       category: String
     ): [Product]!
+  }
+  extend type Mutation {
+    addProductToFavorites(productId: ID!): Product
+    removeFromFavorites(productId: ID!): Product
   }
 `
 

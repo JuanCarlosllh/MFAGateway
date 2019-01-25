@@ -11,8 +11,14 @@ const getUserByUserName = async username =>
 
 const registerUser = userData => axios.post(serviceUrl, userData)
 
+const getsUserFavorites = async id => {
+  const favorites = await axios.get(`${serviceUrl}/${id}/favorites`)
+  return favorites.data
+}
+
 module.exports = {
   getUserByUserName,
   getUserById,
+  getsUserFavorites,
   registerUser
 }
