@@ -4,7 +4,7 @@ const productSchema = gql`
   type Product {
     id: ID!
     name: String!
-    prize: String!
+    price: Float!
     image: String
     type: String
     isOnFavorites: Boolean
@@ -15,6 +15,8 @@ const productSchema = gql`
       offset: Int
       limit: Int
       category: String
+      orderBy: String
+      orderDirection: String
     ): [Product]!
   }
   extend type Mutation {
