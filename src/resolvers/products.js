@@ -1,11 +1,6 @@
 // const { combineResolvers } = require('graphql-resolvers')
-const {
-  getProducts,
-  addToFavorites,
-  removeFromFavorites
-} = require('../services/products')
-
-const { getsUserFavorites } = require('../services/users')
+const { getProducts } = require('../services/products')
+const { getsUserFavorites } = require('../services/favorites')
 
 const productResolvers = {
   Query: {
@@ -30,12 +25,6 @@ const productResolvers = {
       }))
       return productsWithFavorites
     }
-  },
-  Mutation: {
-    addProductToFavorites: (_, { productId }, ctx) =>
-      addToFavorites(ctx.user.id, productId),
-    removeFromFavorites: (_, { productId }, ctx) =>
-      removeFromFavorites(ctx.user.id, productId)
   }
 }
 

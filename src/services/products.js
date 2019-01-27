@@ -31,24 +31,6 @@ const getProducts = async (
   return result.data
 }
 
-const addToFavorites = async (userId, productId) => {
-  const result = await axios.post(`${serviceUrl}/addToFavorites`, {
-    userId,
-    productId
-  })
-  return result.data
-}
-
-const removeFromFavorites = async (userId, productId) => {
-  const result = await axios.post(`${serviceUrl}/removeFavorite`, {
-    userId,
-    productId
-  })
-  return result.data
-}
-
 module.exports = {
-  getProducts,
-  addToFavorites,
-  removeFromFavorites
+  getProducts
 }

@@ -19,10 +19,6 @@ const productSchema = gql`
       orderDirection: String
     ): [Product]!
   }
-  extend type Mutation {
-    addProductToFavorites(productId: ID!): Product
-    removeFromFavorites(productId: ID!): Product
-  }
 `
 
 module.exports = {
