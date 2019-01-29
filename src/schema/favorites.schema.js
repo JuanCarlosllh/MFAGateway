@@ -7,7 +7,7 @@ const favoritesSchema = gql`
   extend type Mutation {
     addProductToFavorites(productId: ID!): Product
     removeFromFavorites(productId: ID!): Product
-    shareFavorites(toUserId: ID!): Boolean
+    shareFavorites(toUserName: String!): Boolean
   }
 `
 

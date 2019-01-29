@@ -14,7 +14,12 @@ const server = new ApolloServer({
   resolvers,
   context: ({ req }) => ({
     user: req.user
-  })
+  }),
+  formatError: error => {
+    console.log(error)
+    delete error.extensions.exception
+    return error
+  }
 })
 
 require('./passport')

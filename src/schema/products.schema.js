@@ -9,6 +9,10 @@ const productSchema = gql`
     type: String
     isOnFavorites: Boolean
   }
+  type ProductsResponse {
+    products: [Product]!
+    count: Int!
+  }
   extend type Query {
     products(
       type: String
@@ -17,7 +21,7 @@ const productSchema = gql`
       category: String
       orderBy: String
       orderDirection: String
-    ): [Product]!
+    ): ProductsResponse
   }
 `
 
