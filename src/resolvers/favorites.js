@@ -12,9 +12,8 @@ const favoritesResolvers = {
     favorites: async (_, data, ctx) => getsUserFavorites(ctx.user.id)
   },
   Mutation: {
-    addProductToFavorites: (_, { productId }, ctx) => {
-      addToFavorites(ctx.user.id, productId)
-    },
+    addProductToFavorites: (_, { productId }, ctx) =>
+      addToFavorites(ctx.user.id, productId),
     removeFromFavorites: (_, { productId }, ctx) =>
       removeFromFavorites(ctx.user.id, productId),
     shareFavorites: async (_, { toUserName }, ctx) => {
