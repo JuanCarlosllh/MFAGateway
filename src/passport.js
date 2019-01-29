@@ -1,6 +1,7 @@
 const passport = require('passport')
 const passportJWT = require('passport-jwt')
 const LocalStrategy = require('passport-local').Strategy
+const bcrypt = require('bcrypt')
 
 const config = require('./config')
 const { getUserByUserName, getUserById } = require('./services/users')
@@ -18,7 +19,8 @@ passport.use(
       try {
         const user = await getUserByUserName(uName)
         const { id, username, password } = user.data
-        if (password === uPass) {
+        const check = await bcrypt.compare(uPass, password)
+        if (check) {
           return next(
             null,
             { username, id },

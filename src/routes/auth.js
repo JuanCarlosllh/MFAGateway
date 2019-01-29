@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
+const bcrypt = require('bcrypt')
 
 const config = require('../config')
 const { getUserByUserName, registerUser } = require('../services/users')
@@ -32,7 +33,10 @@ router.post('/register', async (req, res, next) => {
     console.log(userExists)
     if (userExists.status === 204) {
       try {
-        await registerUser({ username, password })
+        const salt = await bcrypt.genSaltSync(10)
+        const hashedPass = await bcrypt.hash(password, salt)
+        console.log({ username, password: hashedPass })
+        await registerUser({ username, password: hashedPass })
         return res.status(201).send()
       } catch (e) {
         console.error(e)
